@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+      body {
+    margin: 0;
+    padding: 0;
+}
+#header-container {
+    width: 60em;
+    height: auto;
+    position: relative;
+    
+}
+#text-container {
+    width: 80em;
+    height: auto;
+    position: relative;
+}
+#remember-container {
+    width: 60em;
+    height: auto;
+    position: relative;
+    left: 50px;
+}
+.light-theme {
+    background-color: rgb(228, 228, 228);
+    color: #252525;
+}
+.dark-theme {
+    background-color: #252525;
+    color: rgb(228, 228, 228);
+}
+button {
+    position: relative;
+    left: 43em;
+    top: 10px;
+}    
+.light-theme-button {
+    background-color: white;
+    color: black;
+    border: none;
+}
+.dark-theme-button {
+    background-color: black;
+    color: white;
+    border: none;
+}
+  </style>
+    <title>Testing Dark/Light Theme</title>
+</head>
+<body>
+    <div id="header-container" class="container">
+            <h1>This Page is a test for the dark/light theme button!</h1>
+    </div>
+    <div id="text-container" class="container">
+        <h3>The page needs to change not only the background color, but the color from texts and buttons too!</h3>
+    </div>
+    <button id="theme-toggle">Toggle Theme</button>
+    <div id="remember-container" class="container">
+        <h3>(The page will remember the theme if you reload it too).</h3>
+    </div>
+        <script>
+          const body = document.querySelector('body');
+const themeToggle = document.querySelector('#theme-toggle');
+
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-theme');
+  themeToggle.classList.add('dark-theme-button');
+} else {
+  body.classList.add('light-theme');
+  themeToggle.classList.add('light-theme-button');
+}
+
+themeToggle.addEventListener('click', function() {
+  body.classList.toggle('light-theme');
+  body.classList.toggle('dark-theme');
+  themeToggle.classList.toggle('light-theme-button');
+  themeToggle.classList.toggle('dark-theme-button');
+  if (body.classList.contains('light-theme')) {
+    localStorage.setItem('theme', 'light');
+  } else {
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
+        </script>
+</body>
+</html>
